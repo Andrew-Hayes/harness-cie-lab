@@ -1,0 +1,51 @@
+pipeline:
+    name: Pipeline1
+    identifier: Pipeline1
+    projectIdentifier: Andy_test_project_for_env_error
+    orgIdentifier: default
+    tags: {}
+    stages:
+        - stage:
+              name: Build1
+              identifier: Build1
+              description: ""
+              type: Deployment
+              spec:
+                  serviceConfig:
+                      serviceRef: Service1
+                      serviceDefinition:
+                          type: Kubernetes
+                          spec:
+                              variables: []
+                  infrastructure:
+                      infrastructureDefinition:
+                          type: KubernetesDirect
+                          spec:
+                              connectorRef: Test
+                              namespace: test
+                              releaseName: release-<+INFRA_KEY>
+                      allowSimultaneousDeployments: false
+                      environmentRef: NewEnv1
+                  execution:
+                      steps:
+                          - step:
+                                name: Rollout Deployment
+                                identifier: rolloutDeployment
+                                type: K8sRollingDeploy
+                                timeout: 10m
+                                spec:
+                                    skipDryRun: false
+                      rollbackSteps:
+                          - step:
+                                name: Rollback Rollout Deployment
+                                identifier: rollbackRolloutDeployment
+                                type: K8sRollingRollback
+                                timeout: 10m
+                                spec: {}
+              tags: {}
+              failureStrategies:
+                  - onFailure:
+                        errors:
+                            - AllErrors
+                        action:
+                            type: StageRollback
