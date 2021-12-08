@@ -1,0 +1,17 @@
+connector:
+  name: Test
+  identifier: Test
+  description:
+  orgIdentifier: default
+  projectIdentifier: Andy_test_project_for_env_error
+  type: K8sCluster
+  spec:
+    credential:
+      type: ManualConfig
+      spec:
+        masterUrl: localhost
+        auth:
+          type: UsernamePassword
+          spec:
+            username: test
+            passwordRef: AndrewHayes
