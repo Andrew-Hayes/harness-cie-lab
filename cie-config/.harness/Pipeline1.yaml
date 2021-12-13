@@ -25,7 +25,7 @@ pipeline:
                               namespace: test
                               releaseName: release-<+INFRA_KEY>
                       allowSimultaneousDeployments: false
-                      environmentRef: NewEnv1
+                      environmentRef: Env3
                   execution:
                       steps:
                           - step:
