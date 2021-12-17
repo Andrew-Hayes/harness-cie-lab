@@ -1,0 +1,50 @@
+featureFlags:
+  flags:
+  - flag:
+      name: flag_1
+      identifier: flag_1
+      description: ""
+      permanent: false
+      spec:
+        type: boolean
+        default:
+          onVariation: "true"
+          offVariation: "false"
+        variations:
+        - identifier: "true"
+          value: "true"
+        - identifier: "false"
+          value: "false"
+      environments:
+      - identifier: Env1234571
+        default:
+          onVariation: "true"
+          offVariation: "false"
+        state: "off"
+      - identifier: Env1234572
+        default:
+          onVariation: "true"
+          offVariation: "false"
+        state: "off"
+      - identifier: NewEnv2
+        default:
+          onVariation: "true"
+          offVariation: "false"
+        state: "off"
+      - identifier: Env1234568
+        default:
+          onVariation: "true"
+          offVariation: "false"
+        state: "off"
+      - identifier: Env1234569
+        default:
+          onVariation: "true"
+          offVariation: "false"
+        state: "off"
+      - identifier: Env1234567
+        default:
+          onVariation: "true"
+          offVariation: "false"
+        state: "off"
+  projectIdentifier: Andy_test_project_for_env_error
+  orgIdentifier: default
